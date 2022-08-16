@@ -1,10 +1,10 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { DomSanitizer } from '@angular/platform-browser';
-import { CreatePostService } from '../services/create-post.service';
-import { AuthService } from '../../core/authServices/auth.service';
+import { CreatePostService } from '../../../features/services/create-post.service';
+import { AuthService } from '../../../core/authServices/auth.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { ProfileComponent } from '../profile/profile.component';
+import { ProfileComponent } from '../../../features/profile/profile.component';
 
 @Component({
   selector: 'app-create-post',
@@ -12,7 +12,6 @@ import { ProfileComponent } from '../profile/profile.component';
   styleUrls: ['./create-post.component.css'],
 })
 export class CreatePostComponent {
-  @Output() postResult = new EventEmitter<string>();
   username = this.authService.getUsername();
   fileName = '';
   img: any;

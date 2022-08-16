@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { AuthService } from 'src/app/core/authServices/auth.service';
+import { AuthService } from './../../core/authServices/auth.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DeactivateAccountComponent } from './deactivate-account-modal/deactivate-account.component';
 import { ProfileService } from '../services/profile.service';

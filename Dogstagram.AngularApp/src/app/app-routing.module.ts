@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuardService } from './core/guardServices/auth-guard.service';
-import { NavbarComponent } from './features/navbar/navbar.component';
+import { HomeComponent } from './features/home/home.component';
+import { NavbarComponent } from './shared/layout/navbar/navbar.component';
 
 const routes: Routes = [
   {
@@ -11,7 +12,7 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    component: NavbarComponent,
+    component: HomeComponent,
     canActivate: [AuthGuardService],
   },
 ];

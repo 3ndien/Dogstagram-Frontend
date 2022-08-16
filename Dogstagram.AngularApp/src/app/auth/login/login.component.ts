@@ -35,6 +35,7 @@ export class LoginComponent {
       this.authService.saveToken(data.body['token']);
       if (data.status === 200 && data.body['token'] !== undefined) {
         this.route.navigate(['/home']);
+        this.authService.checkToken();
         this.authService.saveUsername(this.loginForm.value['username']);
       }
     });
