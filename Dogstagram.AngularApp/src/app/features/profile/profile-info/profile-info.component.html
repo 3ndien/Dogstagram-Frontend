@@ -1,0 +1,47 @@
+<section>
+  <div class="card mb-3">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <button mat-raised-button class="profile-picture">
+        </button>
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 id="profile-title" class="card-title">
+            <span>
+              {{userInfo.username}}
+            </span>
+            <span>
+              <button mat-raised-button color="primary" routerLink="/edit">Edit Profile</button>
+              <button mat-raised-button color="warn" (click)="deactivateAccount()">Deactivate Account</button>
+            </span>
+          </h5>
+          <p id="follow-p" class="card-text">
+            <span>
+              Followers {{userInfo.followerCount}}
+            </span>
+            <span>
+              Followers {{userInfo.followingCount}}
+            </span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <!-- <mat-tab-group>
+    <mat-tab>
+      <ng-container *ngIf="files.content === undefined">
+        Loading tabs...
+      </ng-container>
+      <ng-template mat-tab-label>{{files.label}}</ng-template>
+      <img *ngFor="let file of files.content" class="post-image" [src]="file" alt="">
+    </mat-tab>
+  <mat-tab>
+    <ng-template mat-tab-label>Videos</ng-template>
+  </mat-tab>
+    </mat-tab-group> -->
+  </section>
+

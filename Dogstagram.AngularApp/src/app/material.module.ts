@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
-import { MatFormFieldModule } from '@angular/material/form-field';
+import {
+  MatFormFieldModule,
+  MAT_FORM_FIELD_DEFAULT_OPTIONS,
+} from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
@@ -13,6 +16,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   imports: [
@@ -30,6 +34,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
     MatDialogModule,
     MatTabsModule,
     MatGridListModule,
+    MatProgressSpinnerModule,
   ],
   exports: [
     MatInputModule,
@@ -46,6 +51,13 @@ import { MatGridListModule } from '@angular/material/grid-list';
     MatDialogModule,
     MatTabsModule,
     MatGridListModule,
+    MatProgressSpinnerModule,
+  ],
+  providers: [
+    {
+      provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
+      useValue: { appearance: 'fill' },
+    },
   ],
 })
 export class MaterialModule {}

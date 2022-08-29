@@ -14,7 +14,6 @@ export class AuthService {
 
   private isLoggedInSource = new Subject();
   isLoggedIn = this.isLoggedInSource.asObservable();
-
   constructor(private http: HttpClient, private router: Router) {}
 
   checkToken(): boolean {

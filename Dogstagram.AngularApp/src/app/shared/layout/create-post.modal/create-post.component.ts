@@ -1,15 +1,14 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { DomSanitizer } from '@angular/platform-browser';
-import { CreatePostService } from '../../../features/services/create-post.service';
+import { CreatePostService } from '../../services/create-post.service';
 import { AuthService } from '../../../core/authServices/auth.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { ProfileComponent } from '../../../features/profile/profile.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-post',
   templateUrl: './create-post.component.html',
-  styleUrls: ['./create-post.component.css'],
 })
 export class CreatePostComponent {
   username = this.authService.getUsername();
@@ -23,7 +22,7 @@ export class CreatePostComponent {
     public dialogRef: MatDialogRef<CreatePostComponent>,
     private dom: DomSanitizer,
     private snackbar: MatSnackBar,
-    private profileComponent: ProfileComponent
+    private router: Router
   ) {}
 
   onFileSelected(event: any) {
@@ -42,15 +41,11 @@ export class CreatePostComponent {
       console.log(response.body.imageUrl);
 
       if (response.status === 201) {
-        this.dialogRef
-          .afterClosed()
-          .subscribe(() =>
-            this.profileComponent.files.content.push(response.body.imageUrl)
-          );
         this.dialogRef.close();
         this.snackbar.open('Post is created', '', {
           duration: 3000,
         });
+        this.router.navigate(['/home']);
       }
     });
   }

@@ -11,7 +11,6 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class LoginComponent {
   loginForm: FormGroup;
-
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
@@ -26,7 +25,6 @@ export class LoginComponent {
 
   login() {
     this.authService.login(this.loginForm.value).subscribe((data) => {
-      console.log(data.body['message']);
       if (data.body['message'] === 'Account was restored') {
         this.snackBar.open(data.body['message'], '', {
           duration: 3000,

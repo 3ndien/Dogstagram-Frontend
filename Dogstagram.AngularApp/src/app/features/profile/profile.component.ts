@@ -1,50 +1,55 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AuthService } from './../../core/authServices/auth.service';
-import { MatDialog } from '@angular/material/dialog';
-import { DeactivateAccountComponent } from './deactivate-account-modal/deactivate-account.component';
 import { ProfileService } from '../services/profile.service';
+import { IPost } from '../store/models/post.model';
+import { Select, Store } from '@ngxs/store';
+import { PostsState } from '../store/states/posts.state';
+import { Observable, Subscription } from 'rxjs';
+import { AddPost } from '../store/actions/post.action';
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ProfileComponent implements OnInit {
+export class ProfileComponent implements OnInit, OnDestroy {
+  @Select(PostsState.getPosts) posts$!: Observable<IPost>;
+  private postSubscription: Subscription;
   public username: any;
   public profile: any;
-  public files!: { label: string; content: string[] };
+  public files!: IPost;
   public videos: any;
   public tags: any;
+
   constructor(
     private authService: AuthService,
-    private dialog: MatDialog,
-    private profileService: ProfileService
+    private profileService: ProfileService,
+    private store: Store
   ) {
     this.username = this.authService.getUsername();
+    this.postSubscription = this.posts$.subscribe((posts: IPost) => {
+      this.files = posts;
+    });
+  }
+  ngOnDestroy(): void {
+    this.postSubscription.unsubscribe();
   }
 
   ngOnInit() {
-    this.getAllFiles();
-    this.profileDetails();
+    this.GetAllPosts();
+    this.getProfileDetails();
   }
 
-  profileDetails() {
-    this.profileService.profileDetails().subscribe((data) => {
+  getProfileDetails() {
+    this.profileService.profileDetails().subscribe((data: any) => {
       this.profile = data;
       console.log(data);
     });
   }
 
-  getAllFiles() {
+  GetAllPosts() {
     this.profileService.getAllFiles().subscribe((data) => {
-      this.files = data;
-      console.log(data);
+      this.store.dispatch(new AddPost(data));
     });
-  }
-
-  deactivateAccount(): void {
-    const dialogRef = this.dialog.open(DeactivateAccountComponent);
-    dialogRef;
   }
 }

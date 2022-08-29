@@ -1,4 +1,4 @@
 export interface IPost {
   label: string;
-  content: string;
+  content: string[];
 }

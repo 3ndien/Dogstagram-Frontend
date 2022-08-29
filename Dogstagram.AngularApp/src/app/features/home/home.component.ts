@@ -7,12 +7,10 @@ import { AuthService } from 'src/app/core/authServices/auth.service';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  isLoggedIn!: boolean;
+  public isLoggedIn!: boolean;
   constructor(private authService: AuthService) {}
 
   ngOnInit() {
-    this.authService.isLoggedIn.subscribe((loginStatus: any) => {
-      this.isLoggedIn = loginStatus;
-    });
+    this.isLoggedIn = this.authService.checkToken();
   }
 }

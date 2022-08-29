@@ -1,0 +1,26 @@
+mat-form-field {
+  width: 30rem;
+}
+
+.file-input {
+  display: none;
+}
+
+.edit-form {
+  display: inline-block;
+  position: relative;
+  left: 50%;
+  transform: translate(-50%);
+  padding-top: 5rem;
+}
+
+.profile-picture {
+  position: relative;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  /* background-image: url("../../../../assets/ProfilPic/132935595_112497870655907_6009303211435631047_n.jpg"); */
+  background-size: 100%;
+  background-position: center center;
+}
+

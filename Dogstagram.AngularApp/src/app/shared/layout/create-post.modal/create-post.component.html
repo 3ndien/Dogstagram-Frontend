@@ -1,6 +1,6 @@
-<input type="file" class="file-input"
-       (change)="onFileSelected($event)" #fileUpload>
-<img [src]="img" class="imgSize">
+<input type="file" style="display: none;"
+(change)="onFileSelected($event)" #fileUpload>
+<img [src]="img" style="width: 20rem;">
 <div class="file-upload">
 
 

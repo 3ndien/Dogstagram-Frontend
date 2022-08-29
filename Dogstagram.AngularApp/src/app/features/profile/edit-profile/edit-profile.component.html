@@ -1,0 +1,39 @@
+<div class="row">
+
+  <div class="col-sm-10" class="d-flex justify-content-center">
+      <button mat-raised-button class="profile-picture" (click)="changeProfilePicture()" style="background-image: url({{imageUrl}});">
+      </button>
+    <a mat-button href="https://www.google.com/" target="_blank">Change profile picture</a>
+    </div>
+  </div>
+<form action="" class="edit-form">
+  <div class="row">
+    <label for="colFormLabelLg" class="col-sm-2 col-form-label col-form-label-lg">Username</label>
+    <div class="col-sm-10">
+      <mat-form-field appearance="fill">
+        <mat-label>Username</mat-label>
+          <input matInput>
+        </mat-form-field>
+      </div>
+    </div>
+
+  <div class="row">
+    <label for="colFormLabelLg" class="col-sm-2 col-form-label col-form-label-lg">Email</label>
+      <div class="col-sm-10">
+        <mat-form-field appearance="fill">
+          <mat-label>Email</mat-label>
+          <input matInput>
+        </mat-form-field>
+      </div>
+    </div>
+
+  <div class="row">
+    <label for="colFormLabelLg" class="col-sm-2 col-form-label col-form-label-lg">Biography</label>
+      <div class="col-sm-10">
+      <mat-form-field appearance="fill">
+        <mat-label>Biography</mat-label>
+        <input matInput>
+      </mat-form-field>
+    </div>
+  </div>
+</form>

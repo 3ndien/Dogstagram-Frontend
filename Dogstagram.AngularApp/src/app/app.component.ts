@@ -1,4 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+} from '@angular/core';
 import { AuthService } from './core/authServices/auth.service';
 
 @Component({
@@ -8,17 +15,13 @@ import { AuthService } from './core/authServices/auth.service';
 })
 export class AppComponent implements OnInit {
   title = 'dogstagramApp';
-  isLoggedIn: boolean = false;
+  isUserLoggedIn: boolean = false;
 
   constructor(private authService: AuthService) {}
 
   ngOnInit() {
     this.authService.isLoggedIn.subscribe((loginStatus: any) => {
-      this.isLoggedIn = loginStatus;
+      this.isUserLoggedIn = loginStatus;
     });
-  }
-
-  setLoggedInStatus($event: any) {
-    this.isLoggedIn = $event;
   }
 }
