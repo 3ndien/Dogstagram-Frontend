@@ -42,6 +42,10 @@ export class AuthService {
     this.router.navigate(['/login']);
   }
 
+  saveProfilePicUrl(imageUrl: string) {
+    localStorage.setItem('profile-pic', imageUrl);
+  }
+
   saveUsername(username: string) {
     localStorage.setItem('username', username);
   }

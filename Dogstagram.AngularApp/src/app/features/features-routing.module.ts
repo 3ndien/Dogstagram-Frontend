@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuardService } from '../core/guardServices/auth-guard.service';
+import { CreatePostComponent } from '../shared/layout/create-post.modal/create-post.component';
 import { HomeComponent } from './home/home.component';
 import { EditProfileComponent } from './profile/edit-profile/edit-profile.component';
 import { ProfileComponent } from './profile/profile.component';

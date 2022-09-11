@@ -1,10 +1,18 @@
 <mat-tab-group mat-align-tabs="center">
   <mat-tab label="First">
-    <mat-grid-list *ngIf="posts?.content?.length" cols="3" rowHeight="1:1">
+    <mat-grid-list *ngIf="posts?.content?.length" cols="4" rowHeight="1:1">
         <mat-grid-tile *ngFor="let post of posts?.content">
           <img class="post-image" [src]="post" alt="">
         </mat-grid-tile>
     </mat-grid-list>
+    <div  *ngIf="!posts?.content?.length">
+      <div>
+        <button class="post-button" mat-raised-button color="primary" (click)=" createPostDialog()">Add Post</button>
+      </div>
+      <div>
+        <h3>There is no content to show!</h3>
+      </div>
+    </div>
   </mat-tab>
   <mat-tab label="Second">Content 2</mat-tab>
   <mat-tab label="Third">Content 3</mat-tab>

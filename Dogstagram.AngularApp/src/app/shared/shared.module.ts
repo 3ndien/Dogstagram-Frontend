@@ -6,22 +6,11 @@ import { MaterialModule } from '../material.module';
 import { SharedRoutingModule } from './shared-routing.module';
 import { CreatePostService } from '../shared/services/create-post.service';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { LoaderComponent } from './components/loader/loader.component';
 
 @NgModule({
-  declarations: [
-    NavbarComponent,
-    CreatePostComponent,
-    PageNotFoundComponent,
-    LoaderComponent,
-  ],
+  declarations: [NavbarComponent, CreatePostComponent, PageNotFoundComponent],
   imports: [CommonModule, MaterialModule, SharedRoutingModule],
   providers: [CreatePostService],
-  exports: [
-    NavbarComponent,
-    CreatePostComponent,
-    PageNotFoundComponent,
-    LoaderComponent,
-  ],
+  exports: [NavbarComponent, CreatePostComponent, PageNotFoundComponent],
 })
 export class SharedModule {}

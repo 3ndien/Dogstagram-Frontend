@@ -3,9 +3,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { DomSanitizer } from '@angular/platform-browser';
 import { AuthService } from 'src/app/core/authServices/auth.service';
-import { CreatePostService } from 'src/app/shared/services/create-post.service';
-import { __makeTemplateObject } from 'tslib';
-import { ProfileComponent } from '../../profile.component';
+import { ProfileService } from 'src/app/features/services/profile.service';
 
 @Component({
   selector: 'app-change-picture',
@@ -20,9 +18,8 @@ export class ChangePictureComponent {
     private dialogRef: MatDialogRef<ChangePictureComponent>,
     private authService: AuthService,
     private dom: DomSanitizer,
-    private postService: CreatePostService,
-    private profileComponent: ProfileComponent,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private profileService: ProfileService
   ) {}
 
   onFileSelected(event: any) {
@@ -37,13 +34,14 @@ export class ChangePictureComponent {
   }
 
   postProfileImage() {
-    this.postService.post(this.formData).subscribe((response) => {
-      if (response.status === 201) {
-        this.dialogRef.close(response.body.imageUrl);
+    this.profileService
+      .setProfilePicture(this.formData)
+      .subscribe((body: any) => {
+        console.log(body);
+        this.dialogRef.close(body);
         this.snackBar.open('Profile picture was changed!', '', {
           duration: 3000,
         });
-      }
-    });
+      });
   }
 }

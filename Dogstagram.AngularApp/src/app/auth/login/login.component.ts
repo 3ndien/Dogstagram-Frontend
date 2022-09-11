@@ -11,6 +11,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class LoginComponent {
   loginForm: FormGroup;
+  isLoading: boolean = false;
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
@@ -24,16 +25,19 @@ export class LoginComponent {
   }
 
   login() {
-    this.authService.login(this.loginForm.value).subscribe((data) => {
-      if (data.body['message'] === 'Account was restored') {
-        this.snackBar.open(data.body['message'], '', {
+    this.isLoading = true;
+    this.authService.login(this.loginForm.value).subscribe((response) => {
+      if (response.body['message'] === 'Account was restored') {
+        this.snackBar.open(response.body['message'], '', {
           duration: 3000,
         });
       }
-      this.authService.saveToken(data.body['token']);
-      if (data.status === 200 && data.body['token'] !== undefined) {
+      this.authService.saveToken(response.body['token']);
+      if (response.status === 200 && response.body['token'] !== undefined) {
         this.route.navigate(['/home']);
+        this.isLoading = false;
         this.authService.checkToken();
+        this.authService.saveProfilePicUrl(response.body.imageUrl);
         this.authService.saveUsername(this.loginForm.value['username']);
       }
     });

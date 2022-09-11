@@ -8,11 +8,6 @@ import { CoreModule } from './core/core.module';
 import { FeaturesModule } from './features/features.module';
 import { AuthModule } from './auth/auth.module';
 import { SharedModule } from './shared/shared.module';
-import { NgxsModule } from '@ngxs/store';
-import { environment } from 'src/environments/environment';
-import { PostsState } from './features/store/states/posts.state';
-import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
-import { NgxsRouterPluginModule } from '@ngxs/router-plugin';
 
 @NgModule({
   declarations: [AppComponent],
@@ -20,11 +15,6 @@ import { NgxsRouterPluginModule } from '@ngxs/router-plugin';
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    NgxsModule.forRoot([PostsState], {
-      developmentMode: !environment.production,
-    }),
-    NgxsReduxDevtoolsPluginModule.forRoot(),
-    NgxsRouterPluginModule.forRoot(),
     CoreModule,
     AuthModule,
     FeaturesModule,

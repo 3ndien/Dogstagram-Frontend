@@ -1,8 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Select } from '@ngxs/store';
-import { Observable } from 'rxjs';
-import { IPost } from '../../store/models/post.model';
-import { PostsState } from '../../store/states/posts.state';
+import { MatDialog } from '@angular/material/dialog';
+import { CreatePostComponent } from 'src/app/shared/layout/create-post.modal/create-post.component';
+import { IPost } from '../models/post.model';
 
 @Component({
   selector: 'app-profile-gallery',
@@ -12,7 +11,12 @@ import { PostsState } from '../../store/states/posts.state';
 export class ProfileGalleryComponent implements OnInit {
   @Input() posts!: IPost;
 
-  constructor() {}
+  constructor(private dialog: MatDialog) {}
 
   ngOnInit(): void {}
+
+  createPostDialog(): void {
+    const dialogRef = this.dialog.open(CreatePostComponent);
+    dialogRef;
+  }
 }

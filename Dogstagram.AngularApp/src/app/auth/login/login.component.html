@@ -16,6 +16,7 @@
     </div>
     <button [disabled]="loginForm.invalid" type="submit" mat-raised-button color="primary">Login</button>
     <mat-divider></mat-divider>
+    <mat-spinner *ngIf="isLoading"></mat-spinner>
     <mat-divider inset vertical></mat-divider>
     <p>Don't have an account? <button type="button" mat-raised-button routerLink="/register">Register</button></p>
 </form>

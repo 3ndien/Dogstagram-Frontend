@@ -16,9 +16,9 @@ import { Router } from '@angular/router';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css'],
 })
-export class NavbarComponent implements OnInit, DoCheck {
+export class NavbarComponent implements OnInit {
   @Input() public isLoggedIn!: boolean;
-
+  username: any;
   constructor(
     private authService: AuthService,
     public dialog: MatDialog,
@@ -27,10 +27,7 @@ export class NavbarComponent implements OnInit, DoCheck {
 
   ngOnInit(): void {
     this.isLoggedIn = this.authService.checkToken();
-  }
-
-  ngDoCheck(): void {
-    this.isLoggedIn = this.authService.checkToken();
+    this.username = this.authService.getUsername();
   }
 
   createPostDialog(): void {

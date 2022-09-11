@@ -1,18 +1,17 @@
 <div class="row">
-
   <div class="col-sm-10" class="d-flex justify-content-center">
       <button mat-raised-button class="profile-picture" (click)="changeProfilePicture()" style="background-image: url({{imageUrl}});">
       </button>
-    <a mat-button href="https://www.google.com/" target="_blank">Change profile picture</a>
+    <a mat-button (click)="changeProfilePicture()">Change profile picture</a>
     </div>
   </div>
-<form action="" class="edit-form">
+<form class="edit-form" [formGroup]="editForm" (ngSubmit)="editProfileDetails()">
   <div class="row">
     <label for="colFormLabelLg" class="col-sm-2 col-form-label col-form-label-lg">Username</label>
     <div class="col-sm-10">
       <mat-form-field appearance="fill">
         <mat-label>Username</mat-label>
-          <input matInput>
+          <input matInput id="name" type="text" formControlName="username">
         </mat-form-field>
       </div>
     </div>
@@ -22,7 +21,7 @@
       <div class="col-sm-10">
         <mat-form-field appearance="fill">
           <mat-label>Email</mat-label>
-          <input matInput>
+          <input matInput id="email" type="email" formControlName="email">
         </mat-form-field>
       </div>
     </div>
@@ -32,8 +31,12 @@
       <div class="col-sm-10">
       <mat-form-field appearance="fill">
         <mat-label>Biography</mat-label>
-        <input matInput>
+        <textarea matInput id="text" type="text" formControlName="biography"></textarea>
       </mat-form-field>
     </div>
+  </div>
+  <div class="d-flex justify-content-center">
+    <button class="editFormButtons" [disabled]="editForm.invalid" type="submit" mat-raised-button color="primary">Submit</button>
+    <button class="editFormButtons" routerLink="/profile" mat-raised-button color="basic">Cancel</button>
   </div>
 </form>

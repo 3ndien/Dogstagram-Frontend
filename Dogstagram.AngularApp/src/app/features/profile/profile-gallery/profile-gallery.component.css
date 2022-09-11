@@ -1,6 +1,23 @@
 
 .post-image {
   object-fit:cover;
-  width: 15rem;
-  height: 15rem;
+  width: 20rem;
+  height: 20rem;
+}
+
+.post-button {
+  margin-top: 1rem;
+  display: inline-block;
+  left: 50%;
+  transform: translate(-50%);
+}
+
+h3 {
+  position: relative;
+  margin-top: 1rem;
+  display: inline-block;
+  left: 50%;
+  transform: translate(-50%);
+  font-size: 1.2rem;
+  font-family: cursive;
 }

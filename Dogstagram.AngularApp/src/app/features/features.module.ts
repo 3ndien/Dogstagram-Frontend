@@ -12,8 +12,8 @@ import { ProfileInfoComponent } from './profile/profile-info/profile-info.compon
 import { EditProfileComponent } from './profile/edit-profile/edit-profile.component';
 import { ChangePictureComponent } from './profile/edit-profile/change-picture.modal/change-picture.component';
 import { ProfileGalleryComponent } from './profile/profile-gallery/profile-gallery.component';
-import { NgxsModule } from '@ngxs/store';
-import { PostsState } from './store/states/posts.state';
+import { FeedCardComponent } from './home/feed-card/feed-card.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -25,12 +25,13 @@ import { PostsState } from './store/states/posts.state';
     EditProfileComponent,
     ChangePictureComponent,
     ProfileGalleryComponent,
+    FeedCardComponent,
   ],
   imports: [
     CommonModule,
     MaterialModule,
     FeaturesRoutingModule,
-    NgxsModule.forFeature([PostsState]),
+    ReactiveFormsModule,
   ],
   providers: [
     ProfileService,

@@ -21,6 +21,7 @@
     "@angular/platform-browser": "^14.1.2",
     "@angular/platform-browser-dynamic": "^14.1.2",
     "@angular/router": "^14.1.2",
+    "@ngrx/store": "^14.3.0",
     "@ngxs/devtools-plugin": "^3.7.5-dev.master-17a1bb8",
     "@ngxs/logger-plugin": "^3.7.5-dev.master-17a1bb8",
     "@ngxs/router-plugin": "^3.7.5",
