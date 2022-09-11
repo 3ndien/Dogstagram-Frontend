@@ -1,0 +1,14 @@
+
+.example-card {
+  max-width: 400px;
+  left: 35%;
+
+}
+
+.example-header-image {
+  background-size: cover;
+}
+
+mat-card {
+  margin: 1rem;
+}
